@@ -1,0 +1,3 @@
+<!-- Use this file to provide workspace-specific custom instructions to Copilot. For more details, visit https://code.visualstudio.com/docs/copilot/copilot-customization#_use-a-githubcopilotinstructionsmd-file -->
+
+This is a Flutter plugin project. The Android implementation should use Kotlin and wrap the Package Manager API, returning a list of all installed apps (with QUERY_ALL_PACKAGES permission), including app name, app id, and icon. The iOS implementation can be a stub or return an empty list. Use the latest Gradle with declarative dependencies. The plugin must be buildable from the command line.
