@@ -4,6 +4,7 @@ version: 1.0.0
 homepage: https://nettica.com
 repository: https://github.com/nettica/pkgmgr
 license: MIT
+publisher: nettica.com
 
 
 environment:
