@@ -7,10 +7,9 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockPkgmgrPlatform
     with MockPlatformInterfaceMixin
     implements PkgmgrPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
-  
+
   @override
   Future<List<Object?>> getInstalledApps({bool showSystem = false}) {
     // TODO: implement getInstalledApps
