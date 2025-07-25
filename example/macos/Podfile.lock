@@ -1,0 +1,22 @@
+PODS:
+  - FlutterMacOS (1.0.0)
+  - pkgmgr (0.0.1):
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - pkgmgr (from `Flutter/ephemeral/.symlinks/plugins/pkgmgr/macos`)
+
+EXTERNAL SOURCES:
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  pkgmgr:
+    :path: Flutter/ephemeral/.symlinks/plugins/pkgmgr/macos
+
+SPEC CHECKSUMS:
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+  pkgmgr: cfcc4a8a1d796d87be8d4fde710230e1635b1d99
+
+PODFILE CHECKSUM: 9c9102f02b82e6c11686674c4c8653c7365ba714
+
+COCOAPODS: 1.16.2
