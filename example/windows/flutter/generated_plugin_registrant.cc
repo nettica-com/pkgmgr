@@ -6,9 +6,9 @@
 
 #include "generated_plugin_registrant.h"
 
-#include <pkgmgr/pkgmgr_plugin.h>
+#include <pkgmgr/pkgmgr_plugin_c_api.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
-  PkgmgrPluginRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("PkgmgrPlugin"));
+  PkgmgrPluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("PkgmgrPluginCApi"));
 }

@@ -1,3 +1,7 @@
+## 1.0.3
+* Fix windows stub
+* This completes the expected feature set for this plugin
+
 ## 1.0.2
 * Fix macOS stub, add windows stub
 * update privacy info for Apple to have no impact on privacy

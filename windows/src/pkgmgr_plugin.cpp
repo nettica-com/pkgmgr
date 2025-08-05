@@ -8,10 +8,23 @@ namespace pkgmgr {
 
 class PkgmgrPlugin : public flutter::Plugin {
  public:
-  static void RegisterWithRegistrar(flutter::PluginRegistrarWindows* registrar) {
-    auto plugin = std::make_unique<PkgmgrPlugin>();
-    registrar->AddPlugin(std::move(plugin));
-  }
+
+ static void PkgmgrPlugin::RegisterWithRegistrar(
+    flutter::PluginRegistrarWindows *registrar) {
+  auto channel =
+      std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
+          registrar->messenger(), "pkgmgr",
+          &flutter::StandardMethodCodec::GetInstance());
+
+  auto plugin = std::make_unique<PkgmgrPlugin>();
+
+  channel->SetMethodCallHandler(
+      [plugin_pointer = plugin.get()](const auto &call, auto result) {
+        plugin_pointer->HandleMethodCall(call, std::move(result));
+      });
+
+  registrar->AddPlugin(std::move(plugin));
+}
 
   PkgmgrPlugin() {}
   virtual ~PkgmgrPlugin() {}
@@ -32,8 +45,8 @@ class PkgmgrPlugin : public flutter::Plugin {
 
 }  // namespace pkgmgr
 
-void PkgmgrPluginRegisterWithRegistrar(
-    FlutterDesktopPluginRegistrarRef registrar) {
+extern "C" __declspec(dllexport) void PkgmgrPluginRegisterWithRegistrar(
+    FlutterDesktopPluginRegistrar *registrar) {
   pkgmgr::PkgmgrPlugin::RegisterWithRegistrar(
       flutter::PluginRegistrarManager::GetInstance()->GetRegistrar<flutter::PluginRegistrarWindows>(registrar));
 }

@@ -18,15 +18,14 @@ set(PLUGIN_NAME "pkgmgr_plugin")
 
 # Any new source files that you add to the plugin should be added here.
 list(APPEND PLUGIN_SOURCES
-  "pkgmgr_plugin.cpp"
   "pkgmgr_plugin.h"
 )
-
 # Define the plugin library target. Its name must not be changed (see comment
 # on PLUGIN_NAME above).
 add_library(${PLUGIN_NAME} SHARED
   "include/pkgmgr/pkgmgr_plugin_c_api.h"
   "pkgmgr_plugin_c_api.cpp"
+  "src/pkgmgr_plugin.cpp"
   ${PLUGIN_SOURCES}
 )
 
