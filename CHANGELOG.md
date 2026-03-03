@@ -1,3 +1,6 @@
+## 1.0.4
+* Fix windows stub build for latest Visual Studio version
+
 ## 1.0.3
 * Fix windows stub
 * This completes the expected feature set for this plugin
