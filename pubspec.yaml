@@ -1,6 +1,6 @@
 name: pkgmgr
 description: "Get all Android apps using QUERY_ALL_PACKAGES permission. Stubs for iOS, macOS and Windows."
-version: 1.0.4
+version: 1.0.5
 homepage: https://nettica.com
 repository: https://github.com/nettica-com/pkgmgr
 license: MIT

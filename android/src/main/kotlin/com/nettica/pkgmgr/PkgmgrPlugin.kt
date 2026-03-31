@@ -46,15 +46,14 @@ class PkgmgrPlugin: FlutterPlugin, MethodCallHandler {
         val iconDrawable = pm.getApplicationIcon(app)
         val iconClass = iconDrawable::class.java.name
         var iconBitmap: android.graphics.Bitmap? = null
+        val iconSize = 96
         if (iconDrawable is android.graphics.drawable.BitmapDrawable) {
-          iconBitmap = iconDrawable.bitmap
+          iconBitmap = android.graphics.Bitmap.createScaledBitmap(iconDrawable.bitmap, iconSize, iconSize, true)
         } else {
           try {
-            val width = iconDrawable.intrinsicWidth.takeIf { it > 0 } ?: 96
-            val height = iconDrawable.intrinsicHeight.takeIf { it > 0 } ?: 96
-            val bitmap = android.graphics.Bitmap.createBitmap(width, height, android.graphics.Bitmap.Config.ARGB_8888)
+            val bitmap = android.graphics.Bitmap.createBitmap(iconSize, iconSize, android.graphics.Bitmap.Config.ARGB_8888)
             val canvas = android.graphics.Canvas(bitmap)
-            iconDrawable.setBounds(0, 0, width, height)
+            iconDrawable.setBounds(0, 0, iconSize, iconSize)
             iconDrawable.draw(canvas)
             iconBitmap = bitmap
             android.util.Log.e("PkgmgrPlugin", "Converted $iconClass to bitmap for $name ($packageName)")

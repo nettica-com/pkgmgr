@@ -1,3 +1,7 @@
+## 1.0.5
+* Scale all app icons to 96x96 before encoding to reduce memory pressure on
+  low-end devices (fixes GPU texture OOM crash on 32-bit ARM)
+
 ## 1.0.4
 * Fix windows stub build for latest Visual Studio version
 
