@@ -1,3 +1,8 @@
+## 1.0.6
+* Add `getInstalledAppsInfo()` — returns app list without icons for fast initial load
+* Add `getAppIcon(packageId)` — loads a single app icon on demand as a 96x96 PNG base64 encoded string
+* iOS, macOS, and Windows stubs updated to return empty list / null for new methods
+
 ## 1.0.5
 * Scale all app icons to 96x96 before encoding to reduce memory pressure on
   low-end devices (fixes GPU texture OOM crash on 32-bit ARM)

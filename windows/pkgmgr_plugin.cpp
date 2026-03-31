@@ -51,6 +51,11 @@ void PkgmgrPlugin::HandleMethodCall(
       version_stream << "7";
     }
     result->Success(flutter::EncodableValue(version_stream.str()));
+  } else if (method_call.method_name().compare("getInstalledApps") == 0 ||
+             method_call.method_name().compare("getInstalledAppsInfo") == 0) {
+    result->Success(flutter::EncodableValue(flutter::EncodableList{}));
+  } else if (method_call.method_name().compare("getAppIcon") == 0) {
+    result->Success(flutter::EncodableValue());
   } else {
     result->NotImplemented();
   }

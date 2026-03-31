@@ -14,6 +14,10 @@ public class PkgmgrPlugin: NSObject, FlutterPlugin {
       result("iOS " + UIDevice.current.systemVersion)
     case "getInstalledApps":
       result([]) // Return empty list on iOS
+    case "getInstalledAppsInfo":
+      result([])
+    case "getAppIcon":
+      result(nil)
     default:
       result(FlutterMethodNotImplemented)
     }

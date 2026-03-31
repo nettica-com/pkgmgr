@@ -25,4 +25,18 @@ class MethodChannelPkgmgr extends PkgmgrPlatform {
     );
     return apps ?? [];
   }
+
+  @override
+  Future<List<Object?>> getInstalledAppsInfo({bool showSystem = false}) async {
+    final apps = await methodChannel.invokeMethod<List<dynamic>>(
+      "getInstalledAppsInfo",
+      {"showSystem": showSystem},
+    );
+    return apps ?? [];
+  }
+
+  @override
+  Future<String?> getAppIcon(String packageId) async {
+    return methodChannel.invokeMethod<String>("getAppIcon", {"packageId": packageId});
+  }
 }

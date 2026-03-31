@@ -30,4 +30,12 @@ abstract class PkgmgrPlatform extends PlatformInterface {
   Future<List<Object?>> getInstalledApps({bool showSystem = false}) {
     throw UnimplementedError('getInstalledApps() has not been implemented.');
   }
+
+  Future<List<Object?>> getInstalledAppsInfo({bool showSystem = false}) {
+    throw UnimplementedError('getInstalledAppsInfo() has not been implemented.');
+  }
+
+  Future<String?> getAppIcon(String packageId) {
+    throw UnimplementedError('getAppIcon() has not been implemented.');
+  }
 }

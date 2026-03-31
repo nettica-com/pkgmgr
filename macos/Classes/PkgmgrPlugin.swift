@@ -9,6 +9,13 @@ public class PkgmgrPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    result(FlutterError(code: "UNIMPLEMENTED", message: "macOS is not supported yet", details: nil))
+    switch call.method {
+    case "getInstalledApps", "getInstalledAppsInfo":
+      result([])
+    case "getAppIcon":
+      result(nil)
+    default:
+      result(FlutterError(code: "UNIMPLEMENTED", message: "macOS is not supported yet", details: nil))
+    }
   }
 }
