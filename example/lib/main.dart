@@ -25,21 +25,33 @@ class _MyAppState extends State<MyApp> {
   void _updateMemoryInfo() {
     final cacheMb = imageCache.currentSizeBytes / (1024 * 1024);
     setState(() {
-      _memoryInfo = '${_apps.length} apps  |  image cache: ${cacheMb.toStringAsFixed(1)} MB';
+      _memoryInfo =
+          '${_apps.length} apps  |  image cache: ${cacheMb.toStringAsFixed(1)} MB';
     });
   }
 
   Future<void> _load(bool onDemand) async {
-    setState(() { _loading = true; _error = null; _memoryInfo = null; _onDemandIcons = onDemand; });
+    setState(() {
+      _loading = true;
+      _error = null;
+      _memoryInfo = null;
+      _onDemandIcons = onDemand;
+    });
     try {
       final apps = onDemand
           ? await _pkgmgr.getInstalledAppsInfo()
           : await _pkgmgr.getInstalledApps();
       apps.sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
-      setState(() { _apps = apps; _loading = false; });
+      setState(() {
+        _apps = apps;
+        _loading = false;
+      });
       _updateMemoryInfo();
     } catch (e) {
-      setState(() { _error = e.toString(); _loading = false; });
+      setState(() {
+        _error = e.toString();
+        _loading = false;
+      });
     }
   }
 
@@ -79,32 +91,47 @@ class _MyAppState extends State<MyApp> {
                   : RefreshIndicator(
                       onRefresh: () async => _updateMemoryInfo(),
                       child: ListView.builder(
-                      itemCount: _apps.length,
-                      itemBuilder: (context, index) {
-                        final app = _apps[index];
-                        return ListTile(
-                          leading: _onDemandIcons
-                              ? FutureBuilder<String?>(
-                                  future: _pkgmgr.getAppIcon(app.packageId),
-                                  builder: (context, snapshot) {
-                                    if (!snapshot.hasData) {
-                                      return const SizedBox(width: 40, height: 40,
-                                          child: Center(child: CircularProgressIndicator(strokeWidth: 2)));
-                                    }
-                                    return snapshot.data != null
-                                        ? Image.memory(base64Decode(snapshot.data!), width: 40, height: 40)
-                                        : const Icon(Icons.apps, size: 40);
-                                  },
-                                )
-                              : app.iconBase64 != null
-                                  ? Image.memory(base64Decode(app.iconBase64!), width: 40, height: 40)
-                                  : const Icon(Icons.apps, size: 40),
-                          title: Text(app.name),
-                          subtitle: Text(app.packageId),
-                        );
-                      },
+                        itemCount: _apps.length,
+                        itemBuilder: (context, index) {
+                          final app = _apps[index];
+                          return ListTile(
+                            leading: _onDemandIcons
+                                ? FutureBuilder<String?>(
+                                    future: _pkgmgr.getAppIcon(app.packageId),
+                                    builder: (context, snapshot) {
+                                      if (!snapshot.hasData) {
+                                        return const SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: Center(
+                                            child: CircularProgressIndicator(
+                                              strokeWidth: 2,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      return snapshot.data != null
+                                          ? Image.memory(
+                                              base64Decode(snapshot.data!),
+                                              width: 40,
+                                              height: 40,
+                                            )
+                                          : const Icon(Icons.apps, size: 40);
+                                    },
+                                  )
+                                : app.iconBase64 != null
+                                ? Image.memory(
+                                    base64Decode(app.iconBase64!),
+                                    width: 40,
+                                    height: 40,
+                                  )
+                                : const Icon(Icons.apps, size: 40),
+                            title: Text(app.name),
+                            subtitle: Text(app.packageId),
+                          );
+                        },
+                      ),
                     ),
-                  ),
             ),
           ],
         ),

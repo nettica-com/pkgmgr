@@ -56,14 +56,16 @@ void main() {
       expect(apps.first.iconBase64, 'aGVsbG8=');
     });
 
-    test('getInstalledAppsInfo returns list of AppInfo without icons',
-        () async {
-      final apps = await pkgmgrPlugin.getInstalledAppsInfo();
-      expect(apps, hasLength(1));
-      expect(apps.first.name, 'Test App');
-      expect(apps.first.packageId, 'com.example.test');
-      expect(apps.first.iconBase64, isNull);
-    });
+    test(
+      'getInstalledAppsInfo returns list of AppInfo without icons',
+      () async {
+        final apps = await pkgmgrPlugin.getInstalledAppsInfo();
+        expect(apps, hasLength(1));
+        expect(apps.first.name, 'Test App');
+        expect(apps.first.packageId, 'com.example.test');
+        expect(apps.first.iconBase64, isNull);
+      },
+    );
 
     test('getAppIcon returns icon for known package', () async {
       final icon = await pkgmgrPlugin.getAppIcon('com.example.test');

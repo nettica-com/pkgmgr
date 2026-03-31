@@ -21,16 +21,18 @@ void main() {
     expect(version?.isNotEmpty, true);
   });
 
-  testWidgets('getInstalledApps returns non-empty list with icons',
-      (WidgetTester tester) async {
+  testWidgets('getInstalledApps returns non-empty list with icons', (
+    WidgetTester tester,
+  ) async {
     final apps = await plugin.getInstalledApps();
     expect(apps, isNotEmpty);
     expect(apps.first.name, isNotEmpty);
     expect(apps.first.packageId, isNotEmpty);
   });
 
-  testWidgets('getInstalledAppsInfo returns non-empty list without icons',
-      (WidgetTester tester) async {
+  testWidgets('getInstalledAppsInfo returns non-empty list without icons', (
+    WidgetTester tester,
+  ) async {
     final apps = await plugin.getInstalledAppsInfo();
     expect(apps, isNotEmpty);
     expect(apps.first.name, isNotEmpty);
@@ -39,8 +41,9 @@ void main() {
     expect(apps.first.iconBase64, isNull);
   });
 
-  testWidgets('getAppIcon returns icon for a known package',
-      (WidgetTester tester) async {
+  testWidgets('getAppIcon returns icon for a known package', (
+    WidgetTester tester,
+  ) async {
     final apps = await plugin.getInstalledAppsInfo();
     expect(apps, isNotEmpty);
     // Use the first app's packageId to fetch its icon

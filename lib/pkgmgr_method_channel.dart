@@ -37,6 +37,8 @@ class MethodChannelPkgmgr extends PkgmgrPlatform {
 
   @override
   Future<String?> getAppIcon(String packageId) async {
-    return methodChannel.invokeMethod<String>("getAppIcon", {"packageId": packageId});
+    return methodChannel.invokeMethod<String>("getAppIcon", {
+      "packageId": packageId,
+    });
   }
 }
